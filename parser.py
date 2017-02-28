@@ -4,7 +4,7 @@ import urllib.request       # библиотека для работы с сет
 from bs4 import BeautifulSoup
 
 
-def get_html(url):           # получение страницы html
+def get_html(url):            # получение страницы html
     response = urllib.request.urlopen(url)
     return response.read()
 
