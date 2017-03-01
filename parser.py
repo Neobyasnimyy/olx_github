@@ -4,7 +4,7 @@ import urllib.request       # библиотека для работы с сет
 from bs4 import BeautifulSoup
 
 
-def get_html(url):            # получение страницы html
+def get_html(url):          # получение страницы html
     response = urllib.request.urlopen(url)
     return response.read()
 
@@ -23,7 +23,7 @@ def parse(html, BASE_URL):
     details_object = telo.find('table', class_='details fixed marginbott20 margintop5 full')
 
     project.update({
-        'object_name': object_name1.text.strip(),
+        'Название объекта': object_name1.text.strip(),
         'address': address.text,
         'url': BASE_URL,
         'Информация о публикации': ' '.join(added[:-3]),
@@ -55,12 +55,12 @@ def parse(html, BASE_URL):
 def save(project, path):  # принимает проэкт и путь к сохранению
     with open(path, 'w') as csvfile:
         writer = csv.writer(csvfile)     # создаем обьект который будет записывать в таблицу данные
-        writer.writerow(('object_name', 'address', 'Информация о публикации', 'Цена', 'Объявление от', 'Тип аренды',
+        writer.writerow(('Название объекта', 'address', 'Информация о публикации', 'Цена', 'Объявление от', 'Тип аренды',
                          'Тип квартиры', 'Количество комнат', 'Общая площадь',
                          'Жилая площадь', 'Площадь кухни', 'Тип', 'Этаж', 'Этажность дома', 'url', 'Топ'))
         # Для каждой строки в CSV файле вызовите writer.writerow, передав итерируемый объект (список или кортеж)
         for project in project:
-            writer.writerow((project.get('object_name'),
+            writer.writerow((project.get('Название объекта'),
                              project.get('address'),
                              project.get('Информация о публикации'),
                              project.get('Цена'),

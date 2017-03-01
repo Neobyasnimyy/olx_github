@@ -15,7 +15,7 @@ def main():
         project.append(parse(get_html(url), url))
 
     #project.append(parse(get_html(BASE_URL), BASE_URL))
-    save(project, project_name + '.csv')
+    save(project, 'result/' + project_name + '.csv')
 
 
 if __name__ == '__main__':
